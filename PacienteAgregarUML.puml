@@ -1,0 +1,45 @@
+@startuml
+annotation java.lang.Override
+annotation javafx.fxml.FXML
+class basedatos.BaseDatos
+class java.io.IOException
+class java.net.URL
+class java.sql.SQLException
+class java.text.SimpleDateFormat
+class java.util.Date
+class java.util.ResourceBundle
+class javafx.event.ActionEvent
+class javafx.fxml.FXMLLoader
+class javafx.scene.Node
+class javafx.scene.Parent
+class javafx.scene.Scene
+class javafx.scene.control.Alert
+class javafx.scene.control.Alert.AlertType
+class javafx.scene.control.Button
+class javafx.scene.control.RadioButton
+class javafx.scene.control.TextField
+class javafx.stage.Stage
+class paciente.agregar.AgregarPacienteController
+interface javafx.fxml.Initializable
+paciente.agregar.AgregarPacienteController ..> java.lang.Override
+paciente.agregar.AgregarPacienteController ..> javafx.fxml.FXML
+paciente.agregar.AgregarPacienteController ..> basedatos.BaseDatos
+paciente.agregar.AgregarPacienteController ..> java.io.IOException
+paciente.agregar.AgregarPacienteController ..> java.net.URL
+paciente.agregar.AgregarPacienteController ..> java.sql.SQLException
+paciente.agregar.AgregarPacienteController ..> java.text.SimpleDateFormat
+paciente.agregar.AgregarPacienteController ..> java.util.Date
+paciente.agregar.AgregarPacienteController ..> java.util.ResourceBundle
+paciente.agregar.AgregarPacienteController ..> javafx.event.ActionEvent
+paciente.agregar.AgregarPacienteController ..> javafx.fxml.FXMLLoader
+paciente.agregar.AgregarPacienteController ..> javafx.scene.Node
+paciente.agregar.AgregarPacienteController ..> javafx.scene.Parent
+paciente.agregar.AgregarPacienteController ..> javafx.scene.Scene
+paciente.agregar.AgregarPacienteController ..> javafx.scene.control.Alert
+paciente.agregar.AgregarPacienteController ..> javafx.scene.control.Alert.AlertType
+paciente.agregar.AgregarPacienteController ..> javafx.scene.control.Button
+paciente.agregar.AgregarPacienteController ..> javafx.scene.control.RadioButton
+paciente.agregar.AgregarPacienteController ..> javafx.scene.control.TextField
+paciente.agregar.AgregarPacienteController ..> javafx.stage.Stage
+paciente.agregar.AgregarPacienteController --|> javafx.fxml.Initializable
+@enduml
