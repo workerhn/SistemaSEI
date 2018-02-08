@@ -147,16 +147,7 @@ public class BaseDatos {
             preparedStmt.setString(15, turno_doctor);
 
             preparedStmt.execute();
-            //myStmt = myConn.createStatement();
-            /*
-            int rowsAffected = myStmt.executeUpdate("INSERT INTO paciente "
-                + "(primer_nombre, segundo_nombre, primer_apellido, segundo_apellido,"
-                + "edad, genero, estado_civil, raza, religion, escolaridad, ocupacion, procedencia,"
-                + "direccion, fecha_hora, turno_doctor)"
-                + "VALUES ('" + primer + "' '" + t2 + "' '" + t3 + "' '" + t4 + "' '" + t5 + "' '"
-                + t6 + "' '" + t7 + "' '" + t8 + "' '" + t9 + "' '" + t10 + "' '" + t11 + "' '"
-                + t12 + "' '" + t13 + "' '" + t14 + "' '" + t15 + "')");
-             */
+
         } catch (SQLException ex) {
 
         }
@@ -166,7 +157,7 @@ public class BaseDatos {
 
     }
 
-    public void delete(String text) {
+    public void delete(int id) {
         Properties props = new Properties();
         try {
             props.load(new FileInputStream("AccessoUsuario.properties"));
@@ -185,10 +176,15 @@ public class BaseDatos {
             myConn = DriverManager.getConnection(theDburl, theUser, thePassword);
             myStmt = myConn.createStatement();
 
-            myRs = myStmt.executeQuery("SELECT * FROM login_user WHERE pass='" + text + "'");
+            // Create query
+            String query = "DELETE FROM paciente where idpaciente = ?";
+            PreparedStatement preparedStmt = myConn.prepareStatement(query);
+            preparedStmt.setInt(1, id);
 
+            // Execute statement
+            preparedStmt.execute();
         } catch (SQLException ex) {
-            Logger.getLogger(BaseDatos.class.getName()).log(Level.SEVERE, null, ex);
+
         }
     }
 }
