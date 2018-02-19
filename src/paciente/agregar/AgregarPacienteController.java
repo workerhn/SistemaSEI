@@ -16,7 +16,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -102,8 +101,8 @@ public class AgregarPacienteController implements Initializable {
     @FXML
     private Button agregarPaciente;
 
-    Stage stage;
-    Scene scene;
+    private Stage stage;
+    private Scene scene;
 
     private BaseDatos bd;
     private Date now = new Date();
@@ -124,70 +123,24 @@ public class AgregarPacienteController implements Initializable {
 
     @FXML
     void openBuscar(ActionEvent event) {
-        try {
-            Parent parent = FXMLLoader.load(getClass().getResource("/paciente/paciente.fxml"));
-
-            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            scene = new Scene(parent);
-
-            stage.setScene(new Scene(parent));
-            stage.show();
-            closeStage();
-        } catch (IOException e) {
-            Alert alert = new Alert(AlertType.WARNING);
-            alert.setContentText(e.getMessage());
-        }
+        loadWindow("/paciente/buscar/BuscarPaciente.fxml", "Buscar Paciente");
     }
 
     @FXML
     void openEliminar(ActionEvent event) {
-        try {
-            Parent parent = FXMLLoader.load(getClass().getResource("/paciente/eliminar/EliminarPaciente.fxml"));
 
-            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            scene = new Scene(parent);
-
-            stage.setScene(new Scene(parent));
-            stage.show();
-            closeStage();
-        } catch (IOException e) {
-            Alert alert = new Alert(AlertType.WARNING);
-            alert.setContentText(e.getMessage());
-        }
+        loadWindow("/paciente/eliminar/EliminarPaciente.fxml", "Eliminar Paciente");
     }
 
     @FXML
     void openHome(ActionEvent event) {
-        try {
-            Parent parent = FXMLLoader.load(getClass().getResource("/main/main.fxml"));
-
-            stage = new Stage();
-            scene = new Scene(parent);
-
-            stage.setScene(scene);
-            stage.show();
-            closeStage();
-        } catch (IOException e) {
-            Alert alert = new Alert(AlertType.WARNING);
-            alert.setContentText(e.getMessage());
-        }
+        loadWindow("/main/main.fxml", "Sistema SEI");
     }
 
     @FXML
     void openModificar(ActionEvent event) {
-        try {
-            Parent parent = FXMLLoader.load(getClass().getResource("/paciente/modificar/ModificarPaciente.fxml"));
 
-            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            scene = new Scene(parent);
-
-            stage.setScene(new Scene(parent));
-            stage.show();
-            closeStage();
-        } catch (IOException e) {
-            Alert alert = new Alert(AlertType.WARNING);
-            alert.setContentText(e.getMessage());
-        }
+        loadWindow("/paceinte/modificar/ModificarPaciente.fxml", "Modificar Paciente");
     }
 
     /**
@@ -207,6 +160,22 @@ public class AgregarPacienteController implements Initializable {
 
         String mysqlFormat = formatter.format(now);
         txt14.setText(mysqlFormat);
+    }
+
+    private void loadWindow(String loc, String title) {
+        try {
+            Parent parent = FXMLLoader.load(getClass().getResource(loc));
+
+            stage = new Stage();
+            stage.setTitle(title);
+            stage.setScene(new Scene(parent));
+            stage.setFullScreen(true);
+            stage.setMaximized(true);
+            stage.show();
+        } catch (IOException e) {
+            Alert alert = new Alert(AlertType.WARNING);
+            alert.setContentText(e.getMessage());
+        }
     }
 
     private void closeStage() {
